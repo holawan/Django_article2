@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+
+  <div class="card container d-flex justify-content-center" style="max-width: 540px;">
+    <div class="row g-0">
+      <div class="col-md-2 mt-5">
+        <img src="https://image.tmdb.org/t/p/w500/{{ poster }}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="card-title d-flex">
+            <div class="pe-2" >{{ title }}</div>
+            <div class="badge bg-success text-wrap" >
+              {{ vote_average }}
+            </div>            
+          </div>
+          <p class="card-text my-0" style="font-size: 12px; ">{{ overview }}</p>
+          <p>개봉일 : {{ release_date }}</p>
+          <a href="https://www.themoviedb.org/movie/{{ id }}?language=ko" class="btn btn-primary fx-6 my-0">상세정보</a>
+        </div>
+    </div>
+  </div>
+{% endblock content %}

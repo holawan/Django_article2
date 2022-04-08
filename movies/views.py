@@ -3,7 +3,8 @@ from django.views.decorators.http import require_http_methods, require_POST, req
 from movies.forms import MovieForm
 from .models import Movie
 # Create your views here.
-
+import requests
+import random
 
 @require_safe
 def index(request) :
@@ -67,3 +68,58 @@ def delete(request,pk):
         #게시글을 삭제한다. 
         movie.delete()
     return redirect('movies:index')
+
+def movie_recommendation(title):
+    BASE_URL = 'https://api.themoviedb.org/3'
+    path = '/search/movie'
+    params = {
+        'api_key' : 'bbd81b379a884bf9476fc33b50fdc89b',
+        'region' : 'KR',
+        'language' : 'ko',
+        'query' : title
+    }
+    response = requests.get(BASE_URL + path, params = params).json()
+    print(response)
+    if response['results'] == [] :
+        return None
+    # 여기에 코드를 작성합니다. 
+    movie_id = response['results'][0]['id'] 
+    
+    BASE_URL_2 = 'https://api.themoviedb.org/3'
+    path_2 = f'/movie/{movie_id}/recommendations'
+    params_2 = {
+        'api_key' : 'bbd81b379a884bf9476fc33b50fdc89b',
+        'language' : 'ko'
+    }
+    response2 = requests.get(BASE_URL_2 + path_2, params = params_2).json()
+    # 여기에 코드를 작성합니다.  
+
+    recommend = response2['results']
+    recommend_list = []
+    for movie in recommend :
+        info = [movie['title'],movie['vote_average'],movie['release_date'],movie['overview'],movie['poster_path'],movie['id']]
+        recommend_list.append(info)
+
+    return recommend_list
+
+def recommendations(request) :
+    rec = random.choice(movie_recommendation('쇼생크 탈출'))
+    print(rec)
+    context = {
+        'title' : rec[0],
+        'vote_average' : round(rec[1],1),
+        'release_date' : rec[2],
+        'overview' : rec[3],
+        'poster' : rec[4],
+        'id' : rec[5]
+    }
+    return render(request,'movies/recommendation.html',context)
+
+# @require_safe
+# def detail(request,pk) :
+#     movie = get_object_or_404(Movie,pk=pk)
+
+#     context = {
+#         'movie' :movie
+#     }
+#     return render(request,'movies/detail.html',context)

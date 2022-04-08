@@ -1,10 +1,5 @@
-from tkinter import Widget
 from django import forms
 from .models import Movie
-
-
-
-
 class MovieForm(forms.ModelForm) :
     GENRE_A = 'comedy'
     GENRE_B = 'horror'

@@ -11,6 +11,23 @@ class MovieForm(forms.ModelForm) :
         (GENRE_C,'로맨스')
     ] 
 
+    title = forms.CharField(
+        widget=forms.TextInput(
+            # attributes
+            attrs = {'placeholder':' title',}))
+    audience = forms.IntegerField(
+        widget=forms.NumberInput(
+            # attributes
+            attrs = {'placeholder':' Audience',}))
+    poster_url = forms.CharField(
+        widget=forms.TextInput(
+            # attributes
+            attrs = {'placeholder':' poster_url',}))
+    description = forms.CharField(
+        widget=forms.TextInput(
+            # attributes
+            attrs = {'placeholder':' description',}))      
+    
     genre = forms.ChoiceField(
         choices=GENRE_CHOICES,
         widget=forms.Select()

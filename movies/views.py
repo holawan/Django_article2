@@ -48,13 +48,13 @@ def update(request,pk) :
         form = MovieForm(request.POST,instance=movie)
 
         if form.is_valid() :
-            form = form.save()
+            movie = form.save()
             return redirect('movies:detail',movie.pk)
     else :
         form = MovieForm(instance=movie)
     context = {
         'movie' : movie,
-        'form':form,
+        'form':form
     }
 
     return render(request, 'movies/update.html',context)

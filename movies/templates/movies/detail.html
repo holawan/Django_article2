@@ -2,17 +2,19 @@
 
 {% block content %}
   <h1>DETAIL</h1>
-  
+  <img src="{{movie.poster_url}}" alt="{{movie.title}}">
   <p>제목 : {{movie.title}}</p>
   <p>평점 : {{movie.score}}</p>
   <p>내용 : {{movie.description}}</p>
-  <img src="{{movie.poster_url}}" alt="{{movie.title}}">
-  <a href="{% url 'movies:update' movie.pk %}">
-    <p>수정</p>
-  </a>
-  <a href="{% url 'movies:index'%}">뒤로가기</a>
-  <form action="{% url 'movies:delete' movie.pk %}" method="POST">
-    {% csrf_token %}
-    <input type="submit", value="삭제">
-  </form>
+  <div class="d-flex align-items-center">
+    {% comment %} movies:edit를 실행하고 현재 영화의 pk값을 전달한다.  {% endcomment %}
+      <a href="{% url 'movies:update' movie.pk %}">EDIT</a>
+    {% comment %} movies:delete를 실행하고 현재 영화의 pk값을 전달한다.  {% endcomment %}
+    <form action="{% url 'movies:delete' movie.pk %}" method = 'POST'>
+      {% csrf_token %}
+      <button class="btn btn-link">DELETE</button>
+    </form>
+    <a href="{% url 'movies:index' %}">BACK</a>
+  </div>
+
 {% endblock content %}

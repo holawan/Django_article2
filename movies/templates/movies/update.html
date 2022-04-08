@@ -7,11 +7,11 @@
   <form action="{% url 'movies:update' movie.pk %}" method='POST'>
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="제출하기!">
-    <input type="reset">
+    <input class="btn btn-primary" type="submit" value="제출하기">
+    <input class="btn btn-info" type="reset" value="초기화">
   </form>
-
-  <a href="{% url 'movies:detail' movie.pk%}">BACK</a>
+  <hr>
+  <a class="btn btn-warning" href="{% url 'movies:detail' movie.pk%}">BACK</a>
 
 
 {% endblock content %}

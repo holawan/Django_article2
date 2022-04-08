@@ -55,9 +55,9 @@ def update(request,pk) :
     return render(request, 'movies/update.html',context)
 
 def delete(request,pk):
-    movie = Movie.objects.get(pk=pk)
-    if request.method=='POST' :
+    if request.method == 'POST' :
+        #POST형태로 해당 영화의 Primary key가 전달되면  
+        movie = Movie.objects.get(pk=pk)
+        #게시글을 삭제한다. 
         movie.delete()
-        movie.save
-        return render(request,'movies:index')
-    return render(request,'movies:detail',movie.pk)
+    return redirect('movies:index')

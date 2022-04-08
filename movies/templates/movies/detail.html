@@ -11,4 +11,8 @@
     <p>수정</p>
   </a>
   <a href="{% url 'movies:index'%}">뒤로가기</a>
+  <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+    {% csrf_token %}
+    <input type="submit", value="삭제">
+  </form>
 {% endblock content %}

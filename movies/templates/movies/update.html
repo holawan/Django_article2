@@ -8,6 +8,7 @@
     {% csrf_token %}
     {{form.as_p}}
     <input type="submit" value="제출하기!">
+    <input type="reset">
   </form>
 
   <a href="{% url 'movies:detail' movie.pk%}">BACK</a>

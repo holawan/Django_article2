@@ -53,3 +53,11 @@ def update(request,pk) :
     }
 
     return render(request, 'movies/update.html',context)
+
+def delete(request,pk):
+    movie = Movie.objects.get(pk=pk)
+    if request.method=='POST' :
+        movie.delete()
+        movie.save
+        return render(request,'movies:index')
+    return render(request,'movies:detail',movie.pk)

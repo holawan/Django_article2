@@ -3,7 +3,7 @@
 
 {% block content %}
   <h1>INDEX</h1>
-
+  <h3><a href="{% url 'movies:create' %}">CREATE</a></h3>
   {% for movie in movies %}
     {{movie}}
   {% endfor %}

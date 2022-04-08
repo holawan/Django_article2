@@ -7,3 +7,8 @@ def index(request) :
         'movies':movies
     }
     return render(request,'movies/index.html',context)
+
+
+#Create,update를 formhtml에서 한 번에 만들어보기 
+
+    

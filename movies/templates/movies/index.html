@@ -5,7 +5,11 @@
   <h1>INDEX</h1>
   <h3><a href="{% url 'movies:create' %}">CREATE</a></h3>
   {% for movie in movies %}
-    {{movie}}
+    <p>title :{{movie.title}}</p>
+    <p>관객 수 : {{movie.audience}}</p>
+    {{movie.genre}}
+    {{movie.score}}
+    <hr>
   {% endfor %}
 
 {% endblock content %}

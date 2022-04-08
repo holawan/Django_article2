@@ -19,7 +19,7 @@ def create(request) :
 
         if form.is_valid() :
             movie = form.save()
-            return redirect('movies:index',movie.pk)
+            return redirect('movies:index')
     else :
         form = MovieForm()
     context = {

@@ -196,10 +196,3 @@ class MovieForm(forms.ModelFrom) :
 - 플레이스 홀더를 추가해줬습니다. 
 
 ![placeholder](README.assets/placeholder.PNG)
-
-### 후기
-
-- 수업시간에 배운 내용으로 구현을 해서 좋았습니다.
-- 천천히 단계별로 명세서에 따라 구현하며 커밋하는게 좋았습니다. 
-  - 실수할 때 다시 돌아가고 커밋을 보면서 복기할 수 있기 때문에
-- 감사합니다.

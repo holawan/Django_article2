@@ -27,12 +27,7 @@ class MovieForm(forms.ModelForm) :
     )
     release_date = forms.DateField(
         input_formats=['%Y-%m-%d'],
-        widget=forms.DateInput(attrs={
-            'class' : 'form-control dateimepicker-input',
-            'data-target': '#datetimepicker1'
-        }
-        )
-    )
+        widget=forms.SelectDateWidget)
     class Meta :
         model = Movie 
 

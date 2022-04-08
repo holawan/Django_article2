@@ -19,7 +19,7 @@ def create(request) :
 
         if form.is_valid() :
             form = form.save()
-            return redirect('movies:index')
+            return redirect('movies:detail')
     else :
         form = MovieForm()
     context = {
@@ -36,3 +36,20 @@ def detail(request,pk) :
         'movie' :movie
     }
     return render(request,'movies/detail.html',context)
+
+def update(request,pk) :
+    movie = Movie.objects.get(pk=pk)
+    if request.method == 'POST' :
+        form = MovieForm(request.POST,instance=movie)
+
+        if form.is_valid() :
+            form = form.save()
+            return redirect('movies:detail',movie.pk)
+    else :
+        form = MovieForm(instance=movie)
+    context = {
+        'movie' : movie,
+        'form':form,
+    }
+
+    return render(request, 'movies/update.html',context)

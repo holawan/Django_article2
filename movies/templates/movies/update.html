@@ -2,7 +2,7 @@
 
 
 {% block content %}
-  <h1>CREATE</h1>
+  <h1>UPDATE</h1>
 
   <form action="{% url 'movies:create' %}" method='POST'>
     {% csrf_token %}
@@ -10,7 +10,7 @@
     <input type="submit" value="제출하기!">
   </form>
 
-  <a href="{% url 'movies:index' %}">BACK</a>
+  <a href="{% url 'movies:detail' movie.pk%}">BACK</a>
 
 
 {% endblock content %}

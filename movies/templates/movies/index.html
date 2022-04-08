@@ -7,8 +7,9 @@
   {% for movie in movies %}
     <p>title :{{movie.title}}</p>
     <p>관객 수 : {{movie.audience}}</p>
-    {{movie.genre}}
-    {{movie.score}}
+    <p>장르 : {{movie.genre}}</p>
+    <p>평점 : {{movie.score}}</p>
+    <a href="{% url 'movies:detail' movie.pk %}">DETAIL</a>
     <hr>
   {% endfor %}
 

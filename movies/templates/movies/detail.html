@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>DETAIL</h1>
+  
+  <p>제목 : {{movie.title}}</p>
+  <p>평점 : {{movie.score}}</p>
+  <p>내용 : {{movie.description}}</p>
+  <p>url : {{movie.poster_url}}</p>
+
+{% endblock content %}

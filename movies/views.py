@@ -18,7 +18,7 @@ def create(request) :
         form = MovieForm(request.POST)
 
         if form.is_valid() :
-            movie = form.save()
+            form = form.save()
             return redirect('movies:index')
     else :
         form = MovieForm()
@@ -28,4 +28,11 @@ def create(request) :
 
     return render(request, 'movies/create.html',context)
 
-    
+#Detail 만들기
+def detail(request,pk) :
+    movie = Movie.objects.get(pk=pk) 
+
+    context = {
+        'movie' :movie
+    }
+    return render(request,'movies/detail.html',context)

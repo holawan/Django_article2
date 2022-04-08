@@ -6,7 +6,7 @@
   <p>제목 : {{movie.title}}</p>
   <p>평점 : {{movie.score}}</p>
   <p>내용 : {{movie.description}}</p>
-  <p>url : {{movie.poster_url}}</p>
+  <img src="{{movie.poster_url}}" alt="{{movie.title}}">
   <a href="{% url 'movies:update' movie.pk %}">
     <p>수정</p>
   </a>
